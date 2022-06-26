@@ -1,5 +1,5 @@
 from dataclasses import field
-from tkinter import Widget
+# from tkinter import Widget
 from django import forms
 from .models import Order
 
