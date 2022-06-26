@@ -19,7 +19,8 @@ def order_create(request):
             # clear the cart
             cart.clear()
             # launch asynchronous task
-            order_created.delay(order.id)
+            # order_created.delay(order.id)
+            order_created(order.id)
             # set the order in the session
             request.session['order_id'] = order.id
             # redirect for payment
