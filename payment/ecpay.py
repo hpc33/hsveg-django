@@ -5,12 +5,10 @@ spec = importlib.util.spec_from_file_location(
     "ecpay_payment_sdk",
     "payment/ecpay_payment_sdk.py"
 )
-from datetime import datetime
-
-
-
 module = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(module)
+from datetime import datetime
+
 
 def ecpay_main(order_id):
     order = get_object_or_404(Order, id=order_id)
