@@ -1,0 +1,68 @@
+{% extends 'store/base.html' %}
+{% load static %}
+
+{% block title %}
+    購物車
+{% endblock title %}
+
+{% block content %}
+    <h1>
+        您的購物車
+    </h1>
+    <table class="cart">
+        <thead>
+            <tr>
+                <th>圖片</th>
+                <th>商品名</th>
+                <th>數量</th>
+                <th>移除</th>
+                <th>單位</th>
+                <th>價錢</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in cart %}
+                {% with product=item.product %}
+                    <tr>
+                        <td>
+                            <a href="{{ product.get_absolute_url }}">
+                                <img src="{% if product.image %} {{ product.image.url }} {% else %} {% static 'img/no_image.jpg' %} {% endif %}">
+                            </a>
+                        </td>
+                        <td>{{ product.name }}</td>
+                        <td>
+                            <form action="{% url 'cart:cart_add' product.id %}" method="post">
+                                {{ item.update_quantity_form.quantity }}
+                                {{ item.update_quantity_form.override }}
+                                <input type="submit" value="更新">
+                                {% csrf_token %}
+                            </form>
+                        </td>
+                        <td>
+                            <form action="{% url 'cart:cart_remove' product.id %}" method="post">
+                                <input type="submit" value="移除">
+                                {% csrf_token %}
+                            </form>
+                        </td>
+                        <td class="num">
+                            NT$ {{ item.price }}
+                        </td>
+                        <td class="num">
+                            NT$ {{ item.total_price }}
+                        </td>
+                    </tr>
+                {% endwith %}
+            {% endfor %}
+            <tr class="total">
+                <td></td>
+                <td colspan="4">總計</td>
+                <td class="num">NT$ {{ cart.get_total_price }}</td>
+            </tr>
+        </tbody>
+    </table>
+    <p class="text-right">
+        <a href="{% url 'onlinestore:product_list' %}" class="button light">繼續購物</a>
+        <a href="{% url 'orders:order_create' %}" class="button">結帳</a>
+    </p>
+{% endblock content %}
+

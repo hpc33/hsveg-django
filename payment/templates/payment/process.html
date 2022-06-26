@@ -1,0 +1,16 @@
+{% extends 'store/base.html' %}
+{% load static %}
+
+{% block title %}
+    使用第三方金流付款
+{% endblock title %}
+
+{% block content %}
+    <h1>使用第三方金流付款</h1>
+    {{ form.render }}
+    <h1>使用綠界付款</h1>
+    <a href="/payment/ecpay"></a>
+{% endblock content %}
+
+
+

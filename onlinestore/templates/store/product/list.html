@@ -1,0 +1,66 @@
+{% extends 'store/base.html' %}
+{% load static %}
+{% load bootstrap5 %}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+
+{% block title %}
+    {% if category %}
+        {{ category.name }}
+    {% else %}
+        商品
+    {% endif %}
+{% endblock title %}
+
+{% block content %}
+    {% comment %} <div id="sidebar">
+        <h3>Categories</h3>
+        <ul>
+            <li {% if not category %} class="selected" {% endif %}>
+                <a href="{% url 'onlinestore:product_list' %}">全部</a>
+            </li>
+            {% for c in categories %}
+                <li {% if category.slug == c.slug %} class="selected" {% endif %}>
+                    <a href="{{ c.get_absolute_url }}">{{ c.name }}</a>
+                </li>
+            {% endfor %}
+        </ul>
+    </div> {% endcomment %}
+
+    <div id="main" class="product-list">
+        {% comment %} <h1>
+            {% if category %}
+                {{ category.name }}
+            {% else %}
+                商品
+            {% endif %}
+        </h1> {% endcomment %}
+
+        {% for product in products %}
+            <div class="item">
+                <div class="product-name">
+                    <a href="{{ product.get_absolute_url }}">
+                        <img src="{% if product.image %}{{ product.image.url }}{% else %}{% static 'img/no_image.jpg' %}{% endif %}">
+                    </a>
+                </div>
+                <div class="product-price-aria">
+                    <a href="{{ product.get_absolute_url }}">
+                        <span class="product-word">
+                            {{ product.name }}
+                        </span>
+                        <span class="price-area">
+                            <span class="text-center"></span>
+                            <span class="cash-symbol">NT$</span>
+                            <span class="cash-num">
+                                {{ product.price|floatformat:"0" }}
+                            </span>
+                        </span>
+                        
+                    </a>
+                </div>
+                
+            </div>
+        {% endfor %}
+    </div>
+{% endblock content %}
+
