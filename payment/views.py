@@ -17,6 +17,7 @@ def payment_process(request):
     order = get_object_or_404(Order, id=order_id)
     total_cost = order.get_total_cost()
     host = request.get_host()
+
     paypal_dict = {
         # 'business': settings.PAYPAL_RECEIVER_EMAIL,
         'amount': '%.2f' % order.get_total_cost().quantize(Decimal('.01')),
@@ -29,6 +30,7 @@ def payment_process(request):
     }
     form = PayPalPaymentsForm(initial=paypal_dict)
     return render(request, 'payment/process.html', {'order': order, 'form': form})
+
 
 
 @csrf_exempt

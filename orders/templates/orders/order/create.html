@@ -8,30 +8,39 @@
 {% endblock title %}
 
 {% block content %}
-    <h1>結帳</h1>
+    <div class="row justify-content-center">
+        {% comment %} <h1>結帳</h1> {% endcomment %}
+    <div class="col-4">
+        <form method="post" class="">
+            {{ form.as_p }}
+            <p>
+                <input type="submit" value="下訂單">
+                {% csrf_token %}
+            </p>
+        
+        </form>
+    </div>
 
-    <div class="order-info">
-        <h3>您的訂單</h3>
-        <ul>
-            {% for item in cart %}
-                <li>
-                    {{ item.quantity }} x {{ item.product.name }}
-                    <span>
-                        NT$ {{ item.total_price }}
-                    </span>
-                </li>
-            {% endfor %}
-        </ul>
+    <div class="col-4">
+        <div class="order-info">
+            <h3>您的訂單</h3>
+            <ul>
+                {% for item in cart %}
+                    <li>
+                        {{ item.quantity }} x {{ item.product.name }}
+                        <span>
+                            NT$ {{ item.total_price }}
+                        </span>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
     </div>
     
-    <form method="post" class="order-form">
-        {{ form.as_p }}
-        <p>
-            <input type="submit" value="下訂單">
-            {% csrf_token %}
-        </p>
     
-    </form>
+    
+
 
     {% comment %} <form class="row g-3">
         <div class="col-md-6">

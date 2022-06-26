@@ -24,13 +24,13 @@ def ecpay_main(order_id):
         'TotalAmount': price,
         'TradeDesc': '訂單測試',
         'ItemName': str(order.id),
-        'ReturnURL': '', # 顧客填完付款資料送出後的頁面
+        'ReturnURL': 'https://hsveg-django.herokuapp.com/payment/end_return/', # 顧客填完付款資料送出後的頁面
         'ChoosePayment': 'ALL',
-        'ClientBackURL': '',
-        'ItemURL': '',
+        'ClientBackURL': 'https://hsveg-django.herokuapp.com/payment/end_page/',
+        'ItemURL': 'https://www.ecpay.com.tw/item_url.php',
         'Remark': '交易備註',
         'ChooseSubPayment': '',
-        'OrderResultURL': '',
+        'OrderResultURL': 'https://hsveg-django.herokuapp.com/payment/end_page',
         'NeedExtraPaidInfo': 'Y',
         'DeviceSource': '',
         'IgnorePayment': '',
