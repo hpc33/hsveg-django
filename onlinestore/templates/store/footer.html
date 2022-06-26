@@ -1,0 +1,33 @@
+{% comment %} {% extends 'store/base.html' %} {% endcomment %}
+{% load static %}
+{% comment %} {% load bootstrap5 %}
+{% bootstrap_css %}
+{% bootstrap_javascript %} {% endcomment %}
+
+{% block footer %}
+    <div class="bg-light mt-3">
+        <div class="container p-4">
+            <div class="row">
+                <div class="col-lg-6">
+                    <h5>聯絡我們</h5>
+                    <p>客服專線：0973313322</p>
+                    <p>Email：jj771210@gmail.com</p>
+                    <p>統一編號：72867635</p> 
+                    <p>食品業者登錄字號：F-200172348-00000-9</p>
+                </div>
+                <div class="col-lg-6">
+                    <h5>取貨門市</h5>
+                    <p>電話：02-82263001</p>
+                    <p>地址：新北市中和區建八路18號(遠東科技廣場)</p>
+                    <p>營業時間：星期一-星期五 11:30-17:00</p>
+                </div>
+            </div>
+        </div>
+        <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+            © {% now "Y" %} Copyright:
+            <a class="text-dark" href="">禾享蔬食</a>
+        </div>
+    </div>
+{% endblock footer %}
+
+
