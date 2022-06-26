@@ -16,40 +16,9 @@
     </head>
 
     <body>
-        <header class="py-3">
-            <div class="container d-flex flex-wrap justify-content-center">
-                <a href="/" class="d-flex align-items-center mb-3 mb-lg-0 me-lg-auto text-dark text-decoration-none">
-                    <img class="logo bi me-2" width="50%" src="{% static 'img/hs_logo.png' %}" alt="禾享蔬食">
-                </a>
-                {% comment %} <form class="col-12 col-lg-auto mb-3 mb-lg-0" role="search">
-                    <input type="search" class="form-control" placeholder="Search..." aria-label="Search">
-                </form> {% endcomment %}
-            </div>
-        </header>
-        <nav class="py-2">
-            <div class="container d-flex flex-wrap">
-                <ul class="nav me-auto">
-                    <li class="nav-item">
-                        <a href="/" class="nav-link link-dark px-3 active">
-                            首頁
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="/" class="nav-link link-dark px-3">
-                            全館商品
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="/" class="nav-link link-dark px-3">
-                            出貨說明
-                        </a>
-                    </li>
-                </ul>
-            </div>
-        </nav>
-
-
-        <div id="subheader">
+        {% include 'store/header.html' %}
+        
+        {% comment %} <div id="subheader">
             <div class="cart">
                 {% with total_items=cart|length%}
                 {% if total_items > 0 %}
@@ -59,16 +28,28 @@
                         NT$ {{ cart.get_total_price}}
                     </a>
                 {% else %}
-                    您的購物車是空的
+                    
                 {% endif %}
                 {% endwith %}
             </div>
-        </div>
+        </div> {% endcomment %}
 
-        <div class="container-xxl">
-            {% block content %}
-            
-            {% endblock content %}
+        <div class="container py-3">
+            <div class="row">
+                <div>
+                    <img class="rounded-3" src="{% static 'img/hsveg_hero.jpg' %}">
+                </div>
+            </div>
         </div>
+        
+        <div class="container py-5">
+            <div class="row">
+                {% block content %}
+                
+                {% endblock content %}
+            </div>
+        </div>
+        
+        {% include 'store/footer.html' %}
     </body>
 </html>

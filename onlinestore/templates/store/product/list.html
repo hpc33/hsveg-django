@@ -27,40 +27,47 @@
         </ul>
     </div> {% endcomment %}
 
-    <div id="main" class="product-list">
-        {% comment %} <h1>
-            {% if category %}
-                {{ category.name }}
-            {% else %}
-                商品
-            {% endif %}
-        </h1> {% endcomment %}
+    
+        
+   
 
-        {% for product in products %}
+    {% comment %} {% for product in products %}
+        <div class="card" style="width: 18rem;">
+            <img src="{% if product.image %}{{ product.image.url }}{% else %}{% static 'img/no_image.jpg' %}{% endif %}" class="card-img-top" alt="" />
+                <div class="card-body">
+                    <div class="d-flex justify-content-between mb-3">
+                    <h5 class="mb-0">{{ product.name }}</h5>
+                    <h5 class="text-dark mb-0">NT$ {{ product.price|floatformat:"0" }}</h5>
+                </div>
+        </div>
+    {% endfor %}   {% endcomment %}
+
+
+    {% for product in products %}
             <div class="item">
                 <div class="product-name">
                     <a href="{{ product.get_absolute_url }}">
-                        <img src="{% if product.image %}{{ product.image.url }}{% else %}{% static 'img/no_image.jpg' %}{% endif %}">
+                        <img class="rounded-3" src="{% if product.image %}{{ product.image.url }}{% else %}{% static 'img/no_image.jpg' %}{% endif %}">
                     </a>
                 </div>
                 <div class="product-price-aria">
-                    <a href="{{ product.get_absolute_url }}">
-                        <span class="product-word">
-                            {{ product.name }}
-                        </span>
-                        <span class="price-area">
-                            <span class="text-center"></span>
-                            <span class="cash-symbol">NT$</span>
-                            <span class="cash-num">
-                                {{ product.price|floatformat:"0" }}
+                    <div class="product-words-wrapper">
+                        <a href="{{ product.get_absolute_url }}">
+                            <span class="product-word">
+                                {{ product.name }}
                             </span>
-                        </span>
-                        
-                    </a>
+                            <span class="price-area">
+                                <span class="text-center"></span>
+                                <span class="cash-symbol">NT$</span>
+                                <span class="cash-num">
+                                    {{ product.price|floatformat:"0" }}
+                                </span>
+                            </span>    
+                        </a>
+                    </div>
                 </div>
-                
             </div>
-        {% endfor %}
-    </div>
+    {% endfor %}
+    
 {% endblock content %}
 

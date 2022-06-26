@@ -168,18 +168,15 @@ ul.errorlist {
     overflow:hidden;
 } */
 
-.product-list .item {
+.item {
     width:25%;
-    padding:10px 20px 10px 0;
     float:left;
     /* text-align:center; */
     line-height:1.2;
 }
 
-.product-list .item img {
-    width:100%;
-    margin-bottom:8px;
-    border-radius: 3.5%;
+.product-price-aria {
+    padding-top: 10px;
 }
 
 .product-detail {
@@ -192,9 +189,9 @@ ul.errorlist {
     font-weight:bold;
 }
 
-.product-detail img {
+/* .product-detail img {
     border-radius: 3.5%;
-}
+} */
 
 .product-detail h1 {
     margin-bottom:0;
