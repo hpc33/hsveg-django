@@ -42,7 +42,7 @@ def ecpay_main(order_id):
     }
 
     extend_params_1 = {
-        'expireDate': 7,
+        'ExpireDate': 7,
         'PaymentInfoURL': 'https://www.ecpay.com.tw/payment_info_url.php',
         'ClientRedirectURL': '',
     }
