@@ -64,7 +64,7 @@ def ecpay_main(order_id):
 
     extend_params_4 = {
         'Redeem': 'N',
-        'UnionPay': '0',
+        'UnionPay': 0,
     }
 
     inv_params = {
