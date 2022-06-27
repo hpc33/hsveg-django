@@ -67,7 +67,7 @@ def end_page(request):
     if request.method == 'POST':
         result = request.POST.get('RtnMsg')
         print(result)
-        if result == 'Successed':
+        if result == 'Succeeded':
             print('#######')
             print(request.POST.get('TradeNo'))
             print(request.POST.get('TradeAmt'))
